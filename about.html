@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | StudentHub+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">Student<span>Hub+</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon"></i>
+        </button>
+        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <span class="hero-badge">About the project</span>
+    <h1 class="hero-title">Why we built <span class="gradient-text">StudentHub+</span></h1>
+    <p class="hero-subtitle">
+      A student's day is scattered across a dozen apps — a notes app for tasks,
+      a spreadsheet for GPA, a random timer app for focus sessions. StudentHub+
+      brings the essentials into one dashboard, built entirely with vanilla web
+      technologies for a hackathon.
+    </p>
+  </section>
+
+  <section class="about-content">
+    <div class="about-grid">
+      <div class="glass-card about-card">
+        <i data-lucide="target"></i>
+        <h3>Our Mission</h3>
+        <p>Give students one clean, fast, distraction-free place to manage academics — no sign-up, no clutter, no ads.</p>
+      </div>
+      <div class="glass-card about-card">
+        <i data-lucide="layers"></i>
+        <h3>Tech Stack</h3>
+        <p>Built with plain HTML, CSS, and JavaScript — no frameworks, no build tools. Runs entirely in your browser.</p>
+      </div>
+      <div class="glass-card about-card">
+        <i data-lucide="lock"></i>
+        <h3>Your Data, Your Browser</h3>
+        <p>All your tasks, assignments, and schedules are saved locally via LocalStorage — nothing is sent to a server.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Student<span>Hub+</span></span>
+        <p>Your all-in-one student productivity dashboard.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </div>
+    <p class="footer-copyright">&copy; 2026 StudentHub+. Built for a web dev hackathon.</p>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

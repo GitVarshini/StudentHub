@@ -52,3 +52,29 @@ button {
 .hidden {
   display: none !important;
 }
+/* Fix native date/time picker icons being invisible in dark mode
+   on Chromium-based browsers */
+body.dark input[type="date"]::-webkit-calendar-picker-indicator,
+body.dark input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* flips the icon's dark color to light */
+}
+/* ============================================
+   PAGE-LOAD FADE-IN
+   Applied to the main content area on every page
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-area,
+.hero,
+.page-hero {
+  animation: fadeInUp 0.4s ease-out;
+}

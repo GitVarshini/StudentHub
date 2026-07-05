@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Helper | StudentHub+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+
+    <aside class="sidebar">
+      <div class="sidebar-logo">Student<span>Hub+</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <a href="todo.html" class="sidebar-link">
+          <i data-lucide="list-checks"></i> To-Do List
+        </a>
+        <a href="assignments.html" class="sidebar-link">
+          <i data-lucide="clipboard-list"></i> Assignments
+        </a>
+        <a href="pomodoro.html" class="sidebar-link">
+          <i data-lucide="timer"></i> Pomodoro
+        </a>
+        <a href="attendance.html" class="sidebar-link">
+          <i data-lucide="percent"></i> Attendance
+        </a>
+        <a href="gpa.html" class="sidebar-link">
+          <i data-lucide="calculator"></i> GPA Calculator
+        </a>
+        <a href="planner.html" class="sidebar-link">
+          <i data-lucide="calendar-days"></i> Study Planner
+        </a>
+        <a href="ai-helper.html" class="sidebar-link active">
+          <i data-lucide="sparkles"></i> AI Study Helper
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="index.html" class="sidebar-link">
+          <i data-lucide="arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-greeting">
+          <h2>AI Study Helper</h2>
+          <p>Powered by Gemini.</p>
+        </div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon"></i>
+        </button>
+      </header>
+
+      <main class="content-area">
+        <div class="glass-card ai-card">
+
+          <!-- Mode tabs -->
+          <div class="ai-mode-tabs">
+            <button class="ai-mode-btn active" data-mode="explain">
+              <i data-lucide="lightbulb"></i> Explain
+            </button>
+            <button class="ai-mode-btn" data-mode="summarize">
+              <i data-lucide="file-text"></i> Summarize
+            </button>
+            <button class="ai-mode-btn" data-mode="quiz">
+              <i data-lucide="help-circle"></i> Quiz Me
+            </button>
+            <button class="ai-mode-btn" data-mode="plan">
+              <i data-lucide="calendar-days"></i> Study Plan
+            </button>
+          </div>
+
+          <p class="ai-mode-hint" id="ai-mode-hint">
+            Paste a concept you want explained simply.
+          </p>
+
+          <form id="ai-form" class="ai-form">
+            <textarea
+              id="ai-input"
+              rows="6"
+              placeholder="e.g. Explain Newton's second law of motion"
+              required
+              maxlength="4000"
+            ></textarea>
+            <button type="submit" class="btn btn-primary btn-lg" id="ai-submit-btn">
+              <i data-lucide="sparkles"></i> Generate
+            </button>
+          </form>
+
+          <div id="ai-output" class="ai-output hidden">
+            <div class="ai-output-header">
+              <span>Response</span>
+              <button id="ai-copy-btn" class="btn-text">Copy</button>
+            </div>
+            <div id="ai-output-content" class="ai-output-content"></div>
+          </div>
+
+          <p id="ai-error" class="ai-error hidden"></p>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/ai-helper.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

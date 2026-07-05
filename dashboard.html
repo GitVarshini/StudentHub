@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | StudentHub+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- ============ SIDEBAR (same on every tool page) ============ -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">Student<span>Hub+</span></div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link active">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <a href="todo.html" class="sidebar-link">
+          <i data-lucide="list-checks"></i> To-Do List
+        </a>
+        <a href="assignments.html" class="sidebar-link">
+          <i data-lucide="clipboard-list"></i> Assignments
+        </a>
+        <a href="pomodoro.html" class="sidebar-link">
+          <i data-lucide="timer"></i> Pomodoro
+        </a>
+        <a href="attendance.html" class="sidebar-link">
+          <i data-lucide="percent"></i> Attendance
+        </a>
+        <a href="gpa.html" class="sidebar-link">
+          <i data-lucide="calculator"></i> GPA Calculator
+        </a>
+        <a href="planner.html" class="sidebar-link">
+          <i data-lucide="calendar-days"></i> Study Planner
+        </a>
+        <a href="ai-helper.html" class="sidebar-link">
+          <i data-lucide="sparkles"></i> AI Study Helper
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="sidebar-link">
+          <i data-lucide="arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-greeting">
+          <h2 id="greeting-text">Hello there!</h2>
+          <p id="datetime-text">Loading date & time...</p>
+        </div>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon"></i>
+        </button>
+      </header>
+
+      <main class="content-area">
+        <div class="widget-grid">
+
+          <!-- Weather widget -->
+          <div class="glass-card widget-card">
+            <h3><i data-lucide="cloud-sun"></i> Weather</h3>
+            <div id="weather-widget">
+              <p class="widget-loading">Fetching your local weather...</p>
+            </div>
+          </div>
+
+          <!-- Quote widget -->
+          <div class="glass-card widget-card">
+            <h3><i data-lucide="quote"></i> Daily Motivation</h3>
+            <div id="quote-widget">
+              <p class="widget-loading">Loading today's quote...</p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+  <header class="topbar">
+    <div class="topbar-left">
+        <button id="sidebar-toggle" class="icon-btn sidebar-toggle-btn" aria-label="Open menu">
+        <i data-lucide="menu"></i>
+        </button>
+        <div class="topbar-greeting">
+        <h2>Dashboard</h2>
+        <p>...</p>
+        </div>
+    </div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+        <i data-lucide="moon"></i>
+    </button>
+</header>
+
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/datetime.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/quote.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

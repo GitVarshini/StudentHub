@@ -1,0 +1,255 @@
+/* ============================================
+   DASHBOARD SHELL LAYOUT
+   Sidebar + Topbar + Main content area.
+   This exact structure is copy-pasted into
+   EVERY tool page (todo.html, gpa.html, etc.)
+   since we have no templating system.
+   ============================================ */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0; /* prevents sidebar from shrinking when content is wide */
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border-right: 1px solid var(--border-glass);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0 var(--space-sm);
+}
+
+.sidebar-logo span {
+  color: var(--color-primary);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px var(--space-sm);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link i {
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar-link:hover {
+  background: var(--bg-body);
+  color: var(--text-primary);
+}
+
+/* The .active class marks which page we're currently on —
+   we add this manually per-page (see dashboard.html below) */
+.sidebar-link.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+}
+
+.sidebar-footer {
+  margin-top: auto; /* pushes this to the bottom of the flex column */
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-glass);
+}
+
+/* --- MAIN CONTENT AREA --- */
+.main-content {
+  flex: 1;
+  min-width: 0; /* prevents flex children from overflowing on small screens */
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.topbar-greeting h2 {
+  font-size: 1.3rem;
+}
+
+.topbar-greeting p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.content-area {
+  padding: var(--space-lg);
+  flex: 1;
+}
+
+/* --- DASHBOARD HOME WIDGET GRID --- */
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.widget-card {
+  padding: var(--space-lg);
+}
+
+.widget-card h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.widget-card h3 i {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+}
+
+/* Weather widget specifics */
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.weather-temp {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.weather-desc {
+  color: var(--text-secondary);
+}
+
+/* Quote widget specifics */
+.quote-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.quote-author {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Loading / error states — reused everywhere we fetch data */
+.widget-loading,
+.widget-error {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.widget-error {
+  color: var(--color-danger);
+}
+
+/* --- RESPONSIVE: collapse sidebar on small screens --- */
+@media (max-width: 800px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    align-items: center;
+  }
+  .sidebar-nav {
+    flex-direction: row;
+  }
+  .sidebar-footer {
+    margin-top: 0;
+    border-top: none;
+  }
+}
+/* ============================================
+   MOBILE SIDEBAR DRAWER
+   Replaces the old horizontal-scroll approach.
+   ============================================ */
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.sidebar-toggle-btn {
+  display: none; /* hidden on desktop, shown only on mobile below */
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0; /* shorthand for top/right/bottom/left: 0 */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 90; /* below the sidebar (100) but above page content */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.visible {
+  display: block;
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  .sidebar-toggle-btn {
+    display: flex; /* show the hamburger only on mobile */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    z-index: 100;
+    flex-direction: column;
+    transform: translateX(-100%); /* hidden off-screen by default */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* slides into view */
+  }
+
+  .sidebar-nav {
+    flex-direction: column; /* undo the old horizontal layout */
+  }
+}

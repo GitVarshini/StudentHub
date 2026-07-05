@@ -75,3 +75,757 @@
   width: 18px;
   height: 18px;
 }
+/* ============================================
+   TODO LIST STYLES
+   Also reused conceptually by Assignments later
+   ============================================ */
+.todo-card {
+  padding: var(--space-lg);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.todo-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.todo-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.todo-form input:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.todo-filters {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--bg-body);
+  border: 1px solid var(--border-glass);
+  transition: opacity 0.2s ease;
+}
+
+/* Custom checkbox using a real <input type="checkbox">
+   but visually styled to match our design system */
+.todo-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary); /* modern, simple way to theme native checkboxes */
+  cursor: pointer;
+}
+
+.todo-item span {
+  flex: 1;
+  word-break: break-word; /* long tasks wrap instead of overflowing */
+}
+
+/* When a task is marked complete, we add this class via JS */
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.todo-item .delete-btn {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.todo-item .delete-btn:hover {
+  color: var(--color-danger);
+}
+
+.todo-item .delete-btn i {
+  width: 18px;
+  height: 18px;
+}
+
+.todo-empty {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: var(--space-lg) 0;
+  font-size: 0.9rem;
+}
+
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-glass);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.btn-text {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.btn-text:hover {
+  text-decoration: underline;
+}
+/* ============================================
+   ASSIGNMENT MANAGER STYLES
+   ============================================ */
+.assignment-card {
+  padding: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.assignment-form {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.assignment-form .form-group input,
+.assignment-form .form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.assignment-form .form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.assignment-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.assignment-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--bg-body);
+  border: 1px solid var(--border-glass);
+  border-left: 4px solid var(--color-primary); /* overridden per-priority via JS inline style */
+}
+
+.assignment-item.completed {
+  opacity: 0.55;
+}
+
+.assignment-item.completed .assignment-title {
+  text-decoration: line-through;
+}
+
+.assignment-checkbox input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.assignment-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.assignment-title {
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.assignment-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.priority-badge {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+.priority-badge.low {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success);
+}
+
+.priority-badge.medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+}
+
+.priority-badge.high {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-danger);
+}
+
+.due-overdue {
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+.assignment-item .delete-btn {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.assignment-item .delete-btn:hover {
+  color: var(--color-danger);
+}
+
+.assignment-item .delete-btn i {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive: stack the two-column form on small screens */
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================================
+   POMODORO TIMER STYLES
+   ============================================ */
+.pomodoro-card {
+  padding: var(--space-xl);
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pomodoro-mode {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-lg);
+}
+
+.pomodoro-mode.focus {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--color-primary);
+}
+
+.pomodoro-mode.break {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success);
+}
+
+.pomodoro-ring-wrap {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto var(--space-lg);
+}
+
+.pomodoro-ring {
+  width: 100%;
+  height: 100%;
+  /* Rotate so the progress starts from the top (12 o'clock)
+     instead of SVG's default 3 o'clock starting point */
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: var(--border-glass);
+  stroke-width: 12;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: url(#pomodoro-gradient); /* not used here to keep it simple — see note below */
+  stroke: var(--color-primary);
+  stroke-width: 12;
+  stroke-linecap: round;
+  /* This transition is what makes the ring visually "ease"
+     each second instead of jumping abruptly */
+  transition: stroke-dashoffset 1s linear;
+}
+
+.pomodoro-time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums; /* keeps digit widths consistent so the number doesn't "jitter" horizontally */
+}
+
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.pomodoro-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-glass);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+/* ============================================
+   ATTENDANCE CALCULATOR STYLES
+   ============================================ */
+.attendance-card {
+  padding: var(--space-xl);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.attendance-form {
+  margin-bottom: var(--space-lg);
+}
+
+.attendance-result {
+  text-align: center;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-glass);
+}
+
+.attendance-ring-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto var(--space-md);
+}
+
+.attendance-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.attendance-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.attendance-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.attendance-message.good {
+  color: var(--color-success);
+}
+
+.attendance-message.bad {
+  color: var(--color-danger);
+}
+/* ============================================
+   GPA CALCULATOR STYLES
+   ============================================ */
+.gpa-card {
+  padding: var(--space-lg);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.gpa-form {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.gpa-form-row {
+  grid-template-columns: 2fr 1fr 1.5fr; /* subject gets more space than credits/grade */
+}
+
+.gpa-form .form-group input,
+.gpa-form .form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.gpa-form .form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.gpa-table-wrap {
+  overflow-x: auto; /* allows horizontal scroll on very small screens instead of breaking layout */
+}
+
+.gpa-table {
+  width: 100%;
+  border-collapse: collapse; /* removes double-borders between adjacent cells */
+}
+
+.gpa-table th {
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: var(--space-sm);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.gpa-table td {
+  padding: var(--space-sm);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.gpa-table .delete-btn {
+  color: var(--text-secondary);
+}
+
+.gpa-table .delete-btn:hover {
+  color: var(--color-danger);
+}
+
+.gpa-table .delete-btn i {
+  width: 18px;
+  height: 18px;
+}
+
+.gpa-result {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+.gpa-result-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.gpa-result-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.gpa-result-scale {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive: shrink the form row on small screens */
+@media (max-width: 600px) {
+  .gpa-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================================
+   STUDY PLANNER STYLES
+   ============================================ */
+.planner-card {
+  padding: var(--space-lg);
+}
+
+.planner-form {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.planner-form-row {
+  grid-template-columns: 1fr 1fr 2fr; /* day / time / activity */
+}
+
+.planner-form .form-group select,
+.planner-form .form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.planner-form .form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* The weekly grid: 7 columns on wide screens, wraps naturally on narrow ones */
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+.planner-day-col {
+  background: var(--bg-body);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  min-height: 120px;
+}
+
+.planner-day-title {
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.planner-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px dashed var(--border-glass);
+  font-size: 0.85rem;
+}
+
+.planner-entry:last-child {
+  border-bottom: none;
+}
+
+.planner-entry-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.planner-entry-time {
+  font-weight: 600;
+  color: var(--color-primary);
+  display: block;
+}
+
+.planner-entry-activity {
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.planner-entry .delete-btn {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.planner-entry .delete-btn:hover {
+  color: var(--color-danger);
+}
+
+.planner-entry .delete-btn i {
+  width: 14px;
+  height: 14px;
+}
+
+.planner-day-empty {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+/* ============================================
+   AI STUDY HELPER STYLES
+   ============================================ */
+.ai-card {
+  padding: var(--space-lg);
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.ai-mode-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.ai-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-body);
+  border: 1px solid var(--border-glass);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ai-mode-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+.ai-mode-btn.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border-color: transparent;
+}
+
+.ai-mode-hint {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.ai-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ai-form textarea {
+  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical; /* let the user resize height, but not width (which could overflow the card) */
+}
+
+.ai-output {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-body);
+  border: 1px solid var(--border-glass);
+}
+
+.ai-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.ai-output-content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre-wrap; /* preserves line breaks from the AI's response */
+}
+
+.ai-error {
+  margin-top: var(--space-md);
+  color: var(--color-danger);
+  font-size: 0.9rem;
+}
+
+/* Spinner shown on the button while waiting for a response */
+.btn-loading .lucide {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
