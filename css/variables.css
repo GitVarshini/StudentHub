@@ -1,0 +1,56 @@
+/* ============================================
+   DESIGN TOKENS
+   These are CSS Custom Properties (variables).
+   Every color, spacing value, and radius used
+   anywhere on the site should come from here.
+   This is what makes dark mode possible without
+   duplicating every single CSS rule.
+   ============================================ */
+
+:root {
+  /* --- Brand colors --- */
+  --color-primary: #6366f1;       /* Indigo — primary buttons, links, highlights */
+  --color-primary-light: #818cf8;
+  --color-secondary: #ec4899;     /* Pink — accents, secondary actions */
+  --color-success: #10b981;       /* Green — completed tasks, positive states */
+  --color-danger: #ef4444;        /* Red — delete buttons, warnings */
+  --color-warning: #f59e0b;       /* Amber — priority flags */
+
+  /* --- Light mode surface colors --- */
+  --bg-body: #f4f6fb;
+  --bg-glass: rgba(255, 255, 255, 0.6);   /* Semi-transparent = glassmorphism */
+  --text-primary: #1e1e2f;
+  --text-secondary: #5a5a6e;
+  --border-glass: rgba(255, 255, 255, 0.3);
+
+  /* --- Effects --- */
+  --shadow-soft: 0 8px 32px rgba(31, 38, 135, 0.1);
+  --blur-glass: blur(12px);
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  /* --- Spacing scale (avoid random pixel values everywhere) --- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+
+  /* --- Typography --- */
+  --font-main: 'Poppins', -apple-system, sans-serif;
+  --font-size-base: 16px;
+}
+
+/* --- Dark mode overrides --- */
+/* When <body> has class="dark", these variables get NEW values.
+   Every element that uses var(--bg-body) etc. automatically
+   updates — that's the whole trick. No duplicate CSS needed. */
+body.dark {
+  --bg-body: #12121c;
+  --bg-glass: rgba(30, 30, 46, 0.6);
+  --text-primary: #f4f6fb;
+  --text-secondary: #a0a0b8;
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+}

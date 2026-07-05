@@ -1,0 +1,54 @@
+/* ============================================
+   RESET & BASE STYLES
+   Browsers apply different default margins/padding
+   to <body>, <h1>, <ul>, etc. We reset them so our
+   design starts from a predictable, blank canvas.
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  /* box-sizing: border-box means padding/border are INCLUDED
+     in an element's width, not added on top. Without this,
+     a 300px-wide box with 20px padding becomes 340px wide,
+     which breaks layouts constantly. This one line prevents
+     a huge class of beginner CSS bugs. */
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  /* This transition is what makes dark/light mode toggle
+     feel smooth instead of an instant jarring flash. */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Utility class we'll reuse constantly */
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub+ | Your All-in-One Student Productivity Dashboard</title>
+
+  <!-- Google Fonts: Poppins, referenced in variables.css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons: using Lucide via CDN (lightweight, no build step needed) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">Student<span>Hub+</span></a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">
+          <i data-lucide="moon"></i>
+        </button>
+        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">✨ Built for students, by students</span>
+      <h1 class="hero-title">
+        Organize your student life<br>
+        with <span class="gradient-text">StudentHub+</span>
+      </h1>
+      <p class="hero-subtitle">
+        Assignments, Pomodoro focus sessions, GPA tracking, attendance goals,
+        and an AI study buddy — all in one clean dashboard.
+      </p>
+      <div class="hero-actions">
+        <a href="dashboard.html" class="btn btn-primary btn-lg">
+          Get Started <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="about.html" class="btn btn-ghost btn-lg">Learn More</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="glass-card floating-card card-1">
+        <i data-lucide="check-circle-2"></i>
+        <span>Assignment submitted</span>
+      </div>
+      <div class="glass-card floating-card card-2">
+        <i data-lucide="timer"></i>
+        <span>Pomodoro: 24:59</span>
+      </div>
+      <div class="glass-card floating-card card-3">
+        <i data-lucide="graduation-cap"></i>
+        <span>GPA: 8.7</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES SECTION ============ -->
+  <section class="features">
+    <h2 class="section-title">Everything you need, in one place</h2>
+    <div class="features-grid">
+      <div class="glass-card feature-card">
+        <i data-lucide="clipboard-list"></i>
+        <h3>Assignment Manager</h3>
+        <p>Track due dates and priorities so nothing slips through the cracks.</p>
+      </div>
+      <div class="glass-card feature-card">
+        <i data-lucide="timer"></i>
+        <h3>Pomodoro Timer</h3>
+        <p>Stay focused with structured 25/5 minute work sessions.</p>
+      </div>
+      <div class="glass-card feature-card">
+        <i data-lucide="percent"></i>
+        <h3>Attendance Calculator</h3>
+        <p>Know exactly how many classes you can skip and still hit 75%.</p>
+      </div>
+      <div class="glass-card feature-card">
+        <i data-lucide="calculator"></i>
+        <h3>GPA Calculator</h3>
+        <p>Calculate your GPA across subjects and credits instantly.</p>
+      </div>
+      <div class="glass-card feature-card">
+        <i data-lucide="calendar-days"></i>
+        <h3>Study Planner</h3>
+        <p>Build and save a daily study schedule that actually sticks.</p>
+      </div>
+      <div class="glass-card feature-card">
+        <i data-lucide="sparkles"></i>
+        <h3>AI Study Helper</h3>
+        <p>Get concepts explained, notes summarized, and quizzes generated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Student<span>Hub+</span></span>
+        <p>Your all-in-one student productivity dashboard.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </div>
+    <p class="footer-copyright">&copy; 2026 StudentHub+. Built for a web dev hackathon.</p>
+  </footer>
+  <script src="js/storage.js"></script>
+  <script src="js/theme.js"></script>
+  <script>
+    // Initialize Lucide icons — this scans the DOM for
+    // <i data-lucide="..."> tags and replaces them with SVGs.
+    lucide.createIcons();
+  </script>
+</body>
+</html>
